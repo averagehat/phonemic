@@ -1,0 +1,482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		773EB2811992EB59003215DE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773EB2801992EB59003215DE /* Cocoa.framework */; };
+		773EB28B1992EB59003215DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 773EB2891992EB59003215DE /* InfoPlist.strings */; };
+		773EB28D1992EB59003215DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EB28C1992EB59003215DE /* main.m */; };
+		773EB2911992EB59003215DE /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 773EB28F1992EB59003215DE /* Credits.rtf */; };
+		773EB2941992EB59003215DE /* PhonemicMacAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EB2931992EB59003215DE /* PhonemicMacAppDelegate.m */; };
+		773EB2971992EB59003215DE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 773EB2951992EB59003215DE /* MainMenu.xib */; };
+		773EB2991992EB59003215DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 773EB2981992EB59003215DE /* Images.xcassets */; };
+		773EB2A01992EB59003215DE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773EB29F1992EB59003215DE /* XCTest.framework */; };
+		773EB2A11992EB59003215DE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773EB2801992EB59003215DE /* Cocoa.framework */; };
+		773EB2A91992EB59003215DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 773EB2A71992EB59003215DE /* InfoPlist.strings */; };
+		773EB2AB1992EB59003215DE /* CocoaSpeechTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EB2AA1992EB59003215DE /* CocoaSpeechTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		773EB2A21992EB59003215DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 773EB2751992EB59003215DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 773EB27C1992EB59003215DE;
+			remoteInfo = CocoaSpeech;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		773EB27D1992EB59003215DE /* CocoaSpeech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaSpeech.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		773EB2801992EB59003215DE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		773EB2831992EB59003215DE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		773EB2841992EB59003215DE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		773EB2851992EB59003215DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		773EB2881992EB59003215DE /* CocoaSpeech-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CocoaSpeech-Info.plist"; sourceTree = "<group>"; };
+		773EB28A1992EB59003215DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		773EB28C1992EB59003215DE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		773EB28E1992EB59003215DE /* CocoaSpeech-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CocoaSpeech-Prefix.pch"; sourceTree = "<group>"; };
+		773EB2901992EB59003215DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		773EB2921992EB59003215DE /* PhonemicMacAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhonemicMacAppDelegate.h; sourceTree = "<group>"; };
+		773EB2931992EB59003215DE /* PhonemicMacAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhonemicMacAppDelegate.m; sourceTree = "<group>"; };
+		773EB2961992EB59003215DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		773EB2981992EB59003215DE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		773EB29E1992EB59003215DE /* CocoaSpeechTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocoaSpeechTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		773EB29F1992EB59003215DE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		773EB2A61992EB59003215DE /* CocoaSpeechTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CocoaSpeechTests-Info.plist"; sourceTree = "<group>"; };
+		773EB2A81992EB59003215DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		773EB2AA1992EB59003215DE /* CocoaSpeechTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CocoaSpeechTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		773EB27A1992EB59003215DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				773EB2811992EB59003215DE /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		773EB29B1992EB59003215DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				773EB2A11992EB59003215DE /* Cocoa.framework in Frameworks */,
+				773EB2A01992EB59003215DE /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		773EB2741992EB59003215DE = {
+			isa = PBXGroup;
+			children = (
+				773EB2861992EB59003215DE /* CocoaSpeech */,
+				773EB2A41992EB59003215DE /* CocoaSpeechTests */,
+				773EB27F1992EB59003215DE /* Frameworks */,
+				773EB27E1992EB59003215DE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		773EB27E1992EB59003215DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				773EB27D1992EB59003215DE /* CocoaSpeech.app */,
+				773EB29E1992EB59003215DE /* CocoaSpeechTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		773EB27F1992EB59003215DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				773EB2801992EB59003215DE /* Cocoa.framework */,
+				773EB29F1992EB59003215DE /* XCTest.framework */,
+				773EB2821992EB59003215DE /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		773EB2821992EB59003215DE /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				773EB2831992EB59003215DE /* AppKit.framework */,
+				773EB2841992EB59003215DE /* CoreData.framework */,
+				773EB2851992EB59003215DE /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		773EB2861992EB59003215DE /* CocoaSpeech */ = {
+			isa = PBXGroup;
+			children = (
+				773EB2921992EB59003215DE /* PhonemicMacAppDelegate.h */,
+				773EB2931992EB59003215DE /* PhonemicMacAppDelegate.m */,
+				773EB2951992EB59003215DE /* MainMenu.xib */,
+				773EB2981992EB59003215DE /* Images.xcassets */,
+				773EB2871992EB59003215DE /* Supporting Files */,
+			);
+			path = CocoaSpeech;
+			sourceTree = "<group>";
+		};
+		773EB2871992EB59003215DE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				773EB2881992EB59003215DE /* CocoaSpeech-Info.plist */,
+				773EB2891992EB59003215DE /* InfoPlist.strings */,
+				773EB28C1992EB59003215DE /* main.m */,
+				773EB28E1992EB59003215DE /* CocoaSpeech-Prefix.pch */,
+				773EB28F1992EB59003215DE /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		773EB2A41992EB59003215DE /* CocoaSpeechTests */ = {
+			isa = PBXGroup;
+			children = (
+				773EB2AA1992EB59003215DE /* CocoaSpeechTests.m */,
+				773EB2A51992EB59003215DE /* Supporting Files */,
+			);
+			path = CocoaSpeechTests;
+			sourceTree = "<group>";
+		};
+		773EB2A51992EB59003215DE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				773EB2A61992EB59003215DE /* CocoaSpeechTests-Info.plist */,
+				773EB2A71992EB59003215DE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		773EB27C1992EB59003215DE /* CocoaSpeech */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 773EB2AE1992EB59003215DE /* Build configuration list for PBXNativeTarget "CocoaSpeech" */;
+			buildPhases = (
+				773EB2791992EB59003215DE /* Sources */,
+				773EB27A1992EB59003215DE /* Frameworks */,
+				773EB27B1992EB59003215DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CocoaSpeech;
+			productName = CocoaSpeech;
+			productReference = 773EB27D1992EB59003215DE /* CocoaSpeech.app */;
+			productType = "com.apple.product-type.application";
+		};
+		773EB29D1992EB59003215DE /* CocoaSpeechTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 773EB2B11992EB59003215DE /* Build configuration list for PBXNativeTarget "CocoaSpeechTests" */;
+			buildPhases = (
+				773EB29A1992EB59003215DE /* Sources */,
+				773EB29B1992EB59003215DE /* Frameworks */,
+				773EB29C1992EB59003215DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				773EB2A31992EB59003215DE /* PBXTargetDependency */,
+			);
+			name = CocoaSpeechTests;
+			productName = CocoaSpeechTests;
+			productReference = 773EB29E1992EB59003215DE /* CocoaSpeechTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		773EB2751992EB59003215DE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = PhonemicMac;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Software Engineering and Media Lab";
+				TargetAttributes = {
+					773EB29D1992EB59003215DE = {
+						TestTargetID = 773EB27C1992EB59003215DE;
+					};
+				};
+			};
+			buildConfigurationList = 773EB2781992EB59003215DE /* Build configuration list for PBXProject "CocoaSpeech" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 773EB2741992EB59003215DE;
+			productRefGroup = 773EB27E1992EB59003215DE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				773EB27C1992EB59003215DE /* CocoaSpeech */,
+				773EB29D1992EB59003215DE /* CocoaSpeechTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		773EB27B1992EB59003215DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				773EB28B1992EB59003215DE /* InfoPlist.strings in Resources */,
+				773EB2991992EB59003215DE /* Images.xcassets in Resources */,
+				773EB2911992EB59003215DE /* Credits.rtf in Resources */,
+				773EB2971992EB59003215DE /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		773EB29C1992EB59003215DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				773EB2A91992EB59003215DE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		773EB2791992EB59003215DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				773EB28D1992EB59003215DE /* main.m in Sources */,
+				773EB2941992EB59003215DE /* PhonemicMacAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		773EB29A1992EB59003215DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				773EB2AB1992EB59003215DE /* CocoaSpeechTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		773EB2A31992EB59003215DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 773EB27C1992EB59003215DE /* CocoaSpeech */;
+			targetProxy = 773EB2A21992EB59003215DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		773EB2891992EB59003215DE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				773EB28A1992EB59003215DE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		773EB28F1992EB59003215DE /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				773EB2901992EB59003215DE /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		773EB2951992EB59003215DE /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				773EB2961992EB59003215DE /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		773EB2A71992EB59003215DE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				773EB2A81992EB59003215DE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		773EB2AC1992EB59003215DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		773EB2AD1992EB59003215DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		773EB2AF1992EB59003215DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CocoaSpeech/CocoaSpeech-Prefix.pch";
+				INFOPLIST_FILE = "CocoaSpeech/CocoaSpeech-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		773EB2B01992EB59003215DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CocoaSpeech/CocoaSpeech-Prefix.pch";
+				INFOPLIST_FILE = "CocoaSpeech/CocoaSpeech-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		773EB2B21992EB59003215DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CocoaSpeech.app/Contents/MacOS/CocoaSpeech";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CocoaSpeech/CocoaSpeech-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "CocoaSpeechTests/CocoaSpeechTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		773EB2B31992EB59003215DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CocoaSpeech.app/Contents/MacOS/CocoaSpeech";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CocoaSpeech/CocoaSpeech-Prefix.pch";
+				INFOPLIST_FILE = "CocoaSpeechTests/CocoaSpeechTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		773EB2781992EB59003215DE /* Build configuration list for PBXProject "CocoaSpeech" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				773EB2AC1992EB59003215DE /* Debug */,
+				773EB2AD1992EB59003215DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		773EB2AE1992EB59003215DE /* Build configuration list for PBXNativeTarget "CocoaSpeech" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				773EB2AF1992EB59003215DE /* Debug */,
+				773EB2B01992EB59003215DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		773EB2B11992EB59003215DE /* Build configuration list for PBXNativeTarget "CocoaSpeechTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				773EB2B21992EB59003215DE /* Debug */,
+				773EB2B31992EB59003215DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 773EB2751992EB59003215DE /* Project object */;
+}
