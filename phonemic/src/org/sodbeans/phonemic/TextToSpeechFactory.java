@@ -47,8 +47,6 @@ public class TextToSpeechFactory {
     private static TextToSpeech instance = null;
     
     //set the appropriate variables if loaded.
-    private static CarbonSpeak carbonSpeak = null;
-    private static AppleSaySpeak appleSaySpeak = null;
     private static WindowsSpeak windowsSpeak = null;
     private static LinuxSpeak linuxSpeak = null;
     
@@ -57,35 +55,9 @@ public class TextToSpeechFactory {
 
         if (os == OperatingSystem.MAC_OSX) {
             try {
-                if (System.getProperty("os.arch").trim().equalsIgnoreCase("ppc"))
-                    loadLibrary("CarbonSpeakJNI_PPC");
-                else
-                    loadLibrary("CarbonSpeakJNI");
-                
-                carbonLibraryLoaded = true;
-            }
-            catch (Exception e) {
-                StackTraceElement[] stackTrace = e.getStackTrace();
-                logger.log(Level.SEVERE, "Could not load carbon library. " +
-                    getStackTraceString(stackTrace));
-            }
-            catch (Error e) {
-                StackTraceElement[] stackTrace = e.getStackTrace();
-                logger.log(Level.SEVERE, "Could not load carbon library. " +
-                    getStackTraceString(stackTrace));
-            }
-
-            if (carbonLibraryLoaded) {
-                // yay! we can use carbon
-                carbonSpeak = new CarbonSpeak();;
-                speech.setSpeech(carbonSpeak);
-                isLoaded = true;
-            }
-            else {
-                // Revert to using the `say' command line utility
-                appleSaySpeak = new AppleSaySpeak();
-                speech.setSpeech(appleSaySpeak);
-                isLoaded = true;
+                instance = TextToSpeechFactory.getPhonemicClient("localhost");
+            } catch (IOException ex) {
+                Logger.getLogger(TextToSpeechFactory.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         else if (os == OperatingSystem.LINUX) {
@@ -216,13 +188,8 @@ public class TextToSpeechFactory {
      * @return
      */
     public synchronized static TextToSpeech getTextToSpeech(TextToSpeechEngine engine) {
-        if (OperatingSystem.MAC_OSX == os && TextToSpeechEngine.APPLE_CARBON == engine) {
-            if(carbonLibraryLoaded) {
-                return carbonSpeak;
-            }
-        }
-        else if (OperatingSystem.MAC_OSX == os && TextToSpeechEngine.APPLE_SAY == engine){
-            return appleSaySpeak;
+        if (OperatingSystem.MAC_OSX == os) {
+            return instance;
         }
         else if (isWindows() && TextToSpeechEngine.MICROSOFT_SAPI == engine){
             if(windowsSAPILoaded) {
