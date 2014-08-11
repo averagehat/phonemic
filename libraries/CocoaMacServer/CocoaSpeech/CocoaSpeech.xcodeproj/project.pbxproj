@@ -18,6 +18,8 @@
 		773EB2A11992EB59003215DE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773EB2801992EB59003215DE /* Cocoa.framework */; };
 		773EB2A91992EB59003215DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 773EB2A71992EB59003215DE /* InfoPlist.strings */; };
 		773EB2AB1992EB59003215DE /* CocoaSpeechTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EB2AA1992EB59003215DE /* CocoaSpeechTests.m */; };
+		7780B60D19942D4300FCF6B9 /* PhonemicMacSpeechFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7780B60C19942D4300FCF6B9 /* PhonemicMacSpeechFunction.m */; };
+		7780B61019942EED00FCF6B9 /* PhonemicMacSpeechServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7780B60F19942EED00FCF6B9 /* PhonemicMacSpeechServer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,10 @@
 		773EB2A61992EB59003215DE /* CocoaSpeechTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CocoaSpeechTests-Info.plist"; sourceTree = "<group>"; };
 		773EB2A81992EB59003215DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		773EB2AA1992EB59003215DE /* CocoaSpeechTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CocoaSpeechTests.m; sourceTree = "<group>"; };
+		7780B60B19942D4300FCF6B9 /* PhonemicMacSpeechFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhonemicMacSpeechFunction.h; sourceTree = "<group>"; };
+		7780B60C19942D4300FCF6B9 /* PhonemicMacSpeechFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhonemicMacSpeechFunction.m; sourceTree = "<group>"; };
+		7780B60E19942EED00FCF6B9 /* PhonemicMacSpeechServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhonemicMacSpeechServer.h; sourceTree = "<group>"; };
+		7780B60F19942EED00FCF6B9 /* PhonemicMacSpeechServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhonemicMacSpeechServer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,10 @@
 		773EB2741992EB59003215DE = {
 			isa = PBXGroup;
 			children = (
+				7780B60E19942EED00FCF6B9 /* PhonemicMacSpeechServer.h */,
+				7780B60F19942EED00FCF6B9 /* PhonemicMacSpeechServer.m */,
+				7780B60B19942D4300FCF6B9 /* PhonemicMacSpeechFunction.h */,
+				7780B60C19942D4300FCF6B9 /* PhonemicMacSpeechFunction.m */,
 				773EB2861992EB59003215DE /* CocoaSpeech */,
 				773EB2A41992EB59003215DE /* CocoaSpeechTests */,
 				773EB27F1992EB59003215DE /* Frameworks */,
@@ -253,8 +263,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7780B60D19942D4300FCF6B9 /* PhonemicMacSpeechFunction.m in Sources */,
 				773EB28D1992EB59003215DE /* main.m in Sources */,
 				773EB2941992EB59003215DE /* PhonemicMacAppDelegate.m in Sources */,
+				7780B61019942EED00FCF6B9 /* PhonemicMacSpeechServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +479,7 @@
 				773EB2B01992EB59003215DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		773EB2B11992EB59003215DE /* Build configuration list for PBXNativeTarget "CocoaSpeechTests" */ = {
 			isa = XCConfigurationList;
@@ -475,6 +488,7 @@
 				773EB2B31992EB59003215DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
