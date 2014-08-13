@@ -8,14 +8,33 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PhonemicMacSpeechServer : NSObject
+
+
+@interface PhonemicMacSpeechServer : NSObject <NSStreamDelegate>
 
 {
     NSString * tmessage;
     char message;
+    
+    int portNumber;
+    id delegate;
+    
+    NSSocketPort *socketPort;
+    NSFileHandle *fileHandle;
+    
+    NSMutableArray *connections;
+    NSMutableArray *requests;
+    
+    NSInputStream *inputStream;
+    NSOutputStream *outputStream; 
 }
 
 + (NSString *) translateMessage:(char)message;
 + (id) separateMessage:(NSString *)tMessage;
+
+- (id)initWithPortNumber:(int)pn delegate:(id)dl;
+- (void) newConnection:(int)portNo;
+- (void)dealloc;
+
 
 @end

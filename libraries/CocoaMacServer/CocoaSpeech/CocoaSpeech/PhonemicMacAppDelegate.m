@@ -10,13 +10,25 @@
 #import <Foundation/Foundation.h>
 #import "PhonemicMacSpeechFunction.h"
 #import "PhonemicMacSpeechServer.h"
+#import "PhonemicMacConnection.h"
+
 
 
 @implementation PhonemicMacAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    NSArray * listInformation = [[NSArray alloc]init];
+    PhonemicMacSpeechServer *server;
+    server = [[PhonemicMacSpeechServer alloc] initWithPortNumber:56101 delegate:self];
+    
+    PhonemicMacSpeechServer *socket = [[PhonemicMacSpeechServer alloc]init];
+    [socket newConnection:56101]; 
+   
+    
+   
+    
+    
+    /* NSArray * listInformation = [[NSArray alloc]init];
     
     NSString* message = @"speak:0:0:Hello everybody";
     
@@ -81,7 +93,7 @@
     if ([[listInformation objectAtIndex:0] isEqual: @"getVersion"] && [[listInformation objectAtIndex:2] isEqual: @"0"]){
         
         int version =[PhonemicMacSpeechFunction getVersion];
-    }
+    }*/
 }
 
 
