@@ -7,6 +7,8 @@
 //
 
 #import "PhonemicMacSpeechServer.h"
+#import <Foundation/NSURLConnection.h>
+
 
 
 
@@ -70,11 +72,13 @@ NSString *tmessage;
 
 - (void) newConnection:(int)portNo{
     
-    
+   
+   
     CFReadStreamRef readStream;
     CFWriteStreamRef writeStream;
+    CFStringRef hostName = (CFStringRef)@"localhost";
     
-    CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"localhost", portNo, &readStream, &writeStream);
+    CFStreamCreatePairWithSocketToHost(NULL, hostName, portNo, &readStream, &writeStream);
     
     inputStream = (__bridge NSInputStream *)readStream;
     outputStream = (__bridge NSOutputStream *)writeStream;
@@ -83,15 +87,18 @@ NSString *tmessage;
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
     
-    /*[inputStream sheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [outputStream sheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];*/
+    
+    [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     
     [inputStream open];
     [outputStream open];
     
-    CFReadStreamSetProperty(readStream, kCFStreamPropertyShouldCloseNativeSocket, kCFBooleanTrue);
     
-    CFWriteStreamSetProperty(writeStream, kCFStreamPropertyShouldCloseNativeSocket, kCFBooleanTrue);
+    
+    /*CFReadStreamSetProperty(readStream, kCFStreamPropertyShouldCloseNativeSocket, kCFBooleanTrue);
+    
+    */
     
    
     
@@ -135,6 +142,7 @@ NSString *tmessage;
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dealloc];
 }
 
 
