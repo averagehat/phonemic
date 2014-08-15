@@ -32,7 +32,7 @@
 + (NSString *) translateMessage:(char)message;
 + (id) separateMessage:(NSString *)tMessage;
 
-- (id)initWithPortNumber:(int)pn delegate:(id)dl;
+- (void)initWithPortNumber:(int)pn;
 - (void) newConnection:(int)portNo;
 - (void)dealloc;
 

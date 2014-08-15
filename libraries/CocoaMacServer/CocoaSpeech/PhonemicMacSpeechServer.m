@@ -49,32 +49,33 @@ NSString *tmessage;
     return listItems;
 }
 
-- (id)initWithPortNumber:(int)pn delegate:(id)dl{
+- (void)initWithPortNumber:(int)pn {
    
         
-        connections = [[NSMutableArray alloc] init];
-        requests = [[NSMutableArray alloc] init];
+        /*connections = [[NSMutableArray alloc] init];
+        requests = [[NSMutableArray alloc] init];*/
         
-        
+    NSLog(@"Start connection");
         socketPort = [[NSSocketPort alloc] initWithTCPPort:pn];
         int fd = [socketPort socket];
-        fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:fd closeOnDealloc:YES];
-        
-        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-        
-        [fileHandle acceptConnectionInBackgroundAndNotify];
-        
-        NSLog(@"Socket cree");
-
+        fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:fd
+                                                   closeOnDealloc:YES];
     
-    return self;
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(newConnection:)
+                                                 name:NSFileHandleConnectionAcceptedNotification
+                                                    object:fileHandle];
+    
+        [fileHandle acceptConnectionInBackgroundAndNotify];
+    
 }
 
-- (void) newConnection:(int)portNo{
+- (void) newConnection{
     
+    NSLog(@"Connection accpeted");
    
-   
-    CFReadStreamRef readStream;
+
+   /* CFReadStreamRef readStream;
     CFWriteStreamRef writeStream;
     CFStringRef hostName = (CFStringRef)@"localhost";
     
@@ -92,7 +93,7 @@ NSString *tmessage;
     [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     
     [inputStream open];
-    [outputStream open];
+    [outputStream open];*/
     
     
     
