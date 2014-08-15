@@ -61,10 +61,10 @@ NSString *tmessage;
         fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:fd
                                                    closeOnDealloc:YES];
     
-        [[NSNotificationCenter defaultCenter] addObserver:self
+    /*    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(newConnection:)
                                                  name:NSFileHandleConnectionAcceptedNotification
-                                                    object:fileHandle];
+                                                    object:fileHandle];*/
     
         [fileHandle acceptConnectionInBackgroundAndNotify];
     
@@ -73,13 +73,35 @@ NSString *tmessage;
 - (void) newConnection{
     
     NSLog(@"Connection accpeted");
-   
-
-   /* CFReadStreamRef readStream;
+    
+    /*NSDictionary *userInfo = [notification userInfo];
+    NSFileHandle *remoteFileHandle = [userInfo objectForKey:NSFileHandleNotificationFileHandleItem];
+    
+    if ([[userInfo allKeys] containsObject:@"NSFileHandleError"]) {
+        NSNumber *errorNo = [userInfo objectForKey:@"NSFileHandleError"];
+        if (errorNo) {
+            NSLog(@"NSFileError: %@",errorNo);
+            return;
+        }
+    }
+    
+    [fileHandle acceptConnectionInBackgroundAndNotify];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(processSoketData:)
+                                                 name:NSFileHandleReadCompletionNotification
+                                               object:remoteFileHandle];
+    
+*/
+    
+   // _dataToSend = [[NSData dataWithBytes:"This is a test" length:16] retain];
+    
+    
+    CFReadStreamRef readStream;
     CFWriteStreamRef writeStream;
     CFStringRef hostName = (CFStringRef)@"localhost";
     
-    CFStreamCreatePairWithSocketToHost(NULL, hostName, portNo, &readStream, &writeStream);
+    CFStreamCreatePairWithSocketToHost(NULL, hostName, 56101, &readStream, &writeStream);
     
     inputStream = (__bridge NSInputStream *)readStream;
     outputStream = (__bridge NSOutputStream *)writeStream;
@@ -93,7 +115,7 @@ NSString *tmessage;
     [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     
     [inputStream open];
-    [outputStream open];*/
+    [outputStream open];
     
     
     
@@ -107,6 +129,12 @@ NSString *tmessage;
     
 }
 
+- (void)closeStream:(NSStream *)stream {
+    [stream close];
+    [stream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [stream release];
+    stream = nil;
+}
 /*
 - (id) start{
     

@@ -33,7 +33,7 @@
 + (id) separateMessage:(NSString *)tMessage;
 
 - (void)initWithPortNumber:(int)pn;
-- (void) newConnection:(int)portNo;
+- (void) newConnection;
 - (void)dealloc;
 
 
