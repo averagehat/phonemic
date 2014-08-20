@@ -18,16 +18,13 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    PhonemicMacSpeechServer *server;
     
-    [[PhonemicMacSpeechServer alloc] initWithPortNumber:56101];
     
-
-    /*PhonemicMacSpeechServer *socket = [[PhonemicMacSpeechServer alloc]init];
-    [socket newConnection:56101];*/
-   
+    server = [[PhonemicMacSpeechServer alloc] initWithPortNumber:56101 delegate:self];
+    
     
    
-    
     
     /* NSArray * listInformation = [[NSArray alloc]init];
     

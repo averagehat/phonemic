@@ -26,14 +26,20 @@
     NSMutableArray *requests;
     
     NSInputStream *inputStream;
-    NSOutputStream *outputStream; 
+    NSOutputStream *outputStream;
+    
+    
+    NSNumber *bytesRead;
 }
 
 + (NSString *) translateMessage:(char)message;
 + (id) separateMessage:(NSString *)tMessage;
 
-- (void)initWithPortNumber:(int)pn;
-- (void) newConnection;
+
+- (id)initWithPortNumber:(int)pn delegate:(id)dl;
+- (void) newConnection:(NSString *)path;
+//- (id)startListening:(NSString *)path;
+//+ (void)closeStream:(NSStream *)stream;
 - (void)dealloc;
 
 

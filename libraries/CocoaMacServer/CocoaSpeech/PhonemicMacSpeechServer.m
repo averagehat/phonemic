@@ -49,67 +49,47 @@ NSString *tmessage;
     return listItems;
 }
 
-- (void)initWithPortNumber:(int)pn {
-   
+- (id)initWithPortNumber:(int)pn delegate:(id)dl{
+    
+    
+            NSLog(@"Start connection");
+    
+            socketPort = [[NSSocketPort alloc] initWithTCPPort:pn];
+            int fd = [socketPort socket];
+            fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:fd closeOnDealloc:YES];
+    
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(newConnection:)
+                                                                name:NSFileHandleConnectionAcceptedNotification
+                                                                    object:fileHandle];
+    
+            [fileHandle acceptConnectionInBackgroundAndNotify];
+    
+            NSLog(@"Socket cree");
+    
         
-        /*connections = [[NSMutableArray alloc] init];
-        requests = [[NSMutableArray alloc] init];*/
-        
-    NSLog(@"Start connection");
-        socketPort = [[NSSocketPort alloc] initWithTCPPort:pn];
-        int fd = [socketPort socket];
-        fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:fd
-                                                   closeOnDealloc:YES];
+            return self;
+    }
     
-    /*    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(newConnection:)
-                                                 name:NSFileHandleConnectionAcceptedNotification
-                                                    object:fileHandle];*/
-    
-        [fileHandle acceptConnectionInBackgroundAndNotify];
-    
-}
-
-- (void) newConnection{
+- (void) newConnection:(NSString *)path{
     
     NSLog(@"Connection accpeted");
     
-    /*NSDictionary *userInfo = [notification userInfo];
-    NSFileHandle *remoteFileHandle = [userInfo objectForKey:NSFileHandleNotificationFileHandleItem];
-    
-    if ([[userInfo allKeys] containsObject:@"NSFileHandleError"]) {
-        NSNumber *errorNo = [userInfo objectForKey:@"NSFileHandleError"];
-        if (errorNo) {
-            NSLog(@"NSFileError: %@",errorNo);
-            return;
-        }
-    }
-    
-    [fileHandle acceptConnectionInBackgroundAndNotify];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(processSoketData:)
-                                                 name:NSFileHandleReadCompletionNotification
-                                               object:remoteFileHandle];
-    
-*/
-    
-   // _dataToSend = [[NSData dataWithBytes:"This is a test" length:16] retain];
-    
-    
     CFReadStreamRef readStream;
     CFWriteStreamRef writeStream;
-    CFStringRef hostName = (CFStringRef)@"localhost";
     
-    CFStreamCreatePairWithSocketToHost(NULL, hostName, 56101, &readStream, &writeStream);
+    NSLog(@"1 partie");
+    CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"localhost", 56101, &readStream, &writeStream);
+   
     
-    inputStream = (__bridge NSInputStream *)readStream;
-    outputStream = (__bridge NSOutputStream *)writeStream;
+    NSLog(@"2 partie");
+    inputStream = (NSInputStream *)readStream;
+    outputStream = (NSOutputStream *)writeStream;
     
+    NSLog(@"3 partie");
     
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
-    
     
     [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
@@ -117,52 +97,110 @@ NSString *tmessage;
     [inputStream open];
     [outputStream open];
     
+    NSLog(@"write output 1");
+    
+    NSString * string =@"OK";
+    NSData * data = [string dataUsingEncoding:NSUTF8StringEncoding];
+    [outputStream write:[data bytes] maxLength:[data length]];
     
     
-    /*CFReadStreamSetProperty(readStream, kCFStreamPropertyShouldCloseNativeSocket, kCFBooleanTrue);
-    
-    */
-    
-   
     
     
+    
+   /* NSLog(@"Start Listening");
+    uint8_t buffer[1024];
+    NSInteger len;
+    NSMutableString *total = [[NSMutableString alloc]init];
+    while([inputStream hasBytesAvailable])
+    {
+        len = [inputStream read:buffer maxLength:sizeof(buffer)];
+        if (len>0) {
+            [total appendString:[[NSString alloc] initWithBytes:buffer length:len encoding:NSASCIIStringEncoding]];
+        }
+    }*/
+
+    
+    /*[inputStream close];
+    [outputStream close];*/
     
 }
 
+- (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)eventCode {
+    
+    switch(eventCode) {
+        
+        case NSStreamEventEndEncountered:
+            [stream close];
+            [stream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+            NSLog(@"Problem with Server");
+            break;
+            
+        case NSStreamEventHasBytesAvailable: ;
+            NSLog(@"Read Input ");
+            uint8_t buffer[100];
+            NSUInteger lenght = [inputStream read:buffer maxLength:sizeof(buffer)];
+            NSString *resultat = [[NSString alloc] initWithBytes:buffer length:lenght encoding:NSASCIIStringEncoding];
+            if (nil != resultat) {
+                NSLog(@"Server said :%@", resultat);
+                
+            }
+            NSLog(@"%@",resultat);
+            break;
+            
+        case NSStreamEventErrorOccurred:
+            NSLog(@"Can connect to the server.");
+            break;
+        
+        case NSStreamEventHasSpaceAvailable:;
+            NSLog(@"write output 2");
+            
+            NSString * string =@"OK";
+            NSData * data = [string dataUsingEncoding:NSUTF8StringEncoding];
+            [outputStream write:[data bytes] maxLength:[data length]];
+            break;
+            
+        case NSStreamEventNone:
+            [stream close];
+            [stream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+            NSLog(@"server problem");
+            break;
+            
+        case NSStreamEventOpenCompleted:;
+            NSLog(@"%@ Stream Open",stream);
+            break;
+            
+            
+    }
+}
 - (void)closeStream:(NSStream *)stream {
     [stream close];
     [stream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [stream release];
     stream = nil;
 }
-/*
-- (id) start{
-    
-    CFStringRef hostname;
-    CFHost host;
-    host  = CFHostCreateWithName (kCFAllocDefault, hostname);
-    
-    CFSocketRef socket;
-    CFReadStreamRef readStream;
-    CFWriteStreamRef writeStream;
-    socket = CFSocketCreate(kCFAllocatorDefault, <#SInt32 protocolFamily#>, <#SInt32 socketType#>, <#SInt32 protocol#>, <#CFOptionFlags callBackTypes#>, <#CFSocketCallBack callout#>, <#const CFSocketContext *context#>)
-    socket = CFStreamCreatePairWithSocket(kCFAllocatorDefault, <#CFSocketNativeHandle sock#>, readStream , writeStream);
-    
-    socketPort = [[NSSocketPort alloc] initWithTCPPort:portNumber];
-    int fileDescriptor = [socketPort socket];
-    
-    listeningHandle = [[NSFileHandle alloc] initWithFileDescriptor:fileDescriptor closeOnDealloc:YES];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveIncomingConnectionNotification:)
-                name:NSFileHandleConnectionAcceptedNotification
-                object:nil];
-    
-    [listeningHandle acceptConnectionInBackgroundAndNotify];
-    return
-}
 
-- (id) receiveIncomingDataNotification{
-    if (CFHTTPMessageIsHeaderComplete(incomingRequest)) {
+/*- (id)startListening:(NSString *)path{
+   
+    NSLog(@"Start Listening");
+    uint8_t buffer[1024];
+    NSInteger len;
+    NSMutableString *total = [[NSMutableString alloc]init];
+    while([inputStream hasBytesAvailable])
+    {
+        len = [inputStream read:buffer maxLength:sizeof(buffer)];
+        if (len>0) {
+            [total appendString:[[NSString alloc] initWithBytes:buffer length:len encoding:NSASCIIStringEncoding]];
+        }
+    }
+    
+    
+    NSLog(@"%@",total);
+    return total;
+
+}*/
+
+/*- (id) receiveIncomingDataNotification{
+    if (CFHTTPMessageIsHeaderComplete(inputStream)) {
         NSFileHandle *handler = NSFileHandleNotificationDataItem;
         
     }
