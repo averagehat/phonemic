@@ -29,7 +29,7 @@
 + (void) setTextToSpeechEngine;
 
 
-+ (void) speak;
++ (void) speak:(NSString *)text;
 + (BOOL) canSpeak;
 + (BOOL) isSpeaking;
 + (NSString *) getCurrentVoice;

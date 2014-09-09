@@ -21,77 +21,316 @@
     PhonemicMacSpeechServer *server;
     
     
-    server = [[PhonemicMacSpeechServer alloc] initWithPortNumber:56101 delegate:self];
+    server = [[PhonemicMacSpeechServer alloc] initWithPortNumber:56103 delegate:self];
     
     
    
     
-    /* NSArray * listInformation = [[NSArray alloc]init];
+    NSArray * informationList = [[NSArray alloc]init];
+    NSMutableArray * waitingList = [[NSMutableArray alloc]init];
     
-    NSString* message = @"speak:0:0:Hello everybody";
+    NSString* message = @"speak:MEDIUM_HIGH:0:Hello everybody";
+    NSString* message2 = @"speak:LOWEST:0:Hello everybody";
+    NSString* message3 = @"speak:HIGHEST:0:Hello everybody";
+    NSArray * informationList2 = [[NSArray alloc]init];
+    NSArray * informationList3 = [[NSArray alloc]init];
     
-    listInformation =[PhonemicMacSpeechServer separateMessage:message];
+    informationList =[PhonemicMacSpeechServer separateMessage:message];
+    informationList2 =[PhonemicMacSpeechServer separateMessage:message2];
+    informationList3 =[PhonemicMacSpeechServer separateMessage:message3];
+    
+    NSArray * emptyList = [[NSArray alloc]initWithObjects:@"Empty", @"NULL", nil];
+    [waitingList addObject:emptyList];
+    
+    [waitingList insertObject:informationList2 atIndex:0];
+    [waitingList insertObject:informationList3 atIndex:0];
+
     
     
-    if ([[listInformation objectAtIndex:0] isEqual: @"speak"] && [[listInformation objectAtIndex:2] isEqual: @"0"])
+    
+    
+    for (int nb=0; nb<[waitingList count]; nb++)
     {
-        [PhonemicMacSpeechFunction speak];
+        NSLog(@"action : %@",[waitingList objectAtIndex:nb]);
     }
     
-    if ([[listInformation objectAtIndex:0] isEqual: @"pause"] && [[listInformation objectAtIndex:2] isEqual: @"0"]){
+    NSString * myVariable =[informationList objectAtIndex:0];
+    NSString * myPriority =[informationList objectAtIndex:1];
+    NSString * emptyCondition =[waitingList objectAtIndex:0];
+
+    if ([myVariable  isNotEqualTo:@"speak"] && [myVariable isNotEqualTo:@"speakBlocking"])
+    {
+        if ([emptyCondition isEqualTo:@"Empty"])
+        {
+            [waitingList insertObject:informationList atIndex:0];
+        }
+        else
+        {
+            [waitingList insertObject:informationList atIndex:[waitingList count]-1];
+            
+        }
         
-        [PhonemicMacSpeechFunction pause];
+        for (int nb=0; nb<[waitingList count]; nb++)
+         {
+         NSLog(@"action : %@",[waitingList objectAtIndex:nb]);
+         }
+        
+    }
+    else if ([myVariable isEqualToString:@"speak"] || [myVariable isEqualToString:@"speakBlocking"])
+    {
+        if ([emptyCondition isEqualTo:@"Empty"])
+        {
+             [waitingList insertObject:informationList atIndex:0];
+        }
+        else if ([myPriority isEqualTo:@"BLOCKING"])
+        {
+            [waitingList insertObject:informationList atIndex:0];
+        }
+        else if ([myPriority isEqualTo: @"HIGHEST"])
+        {
+            NSString * priority = nil;
+            int index = 0;
+            int i=0;
+             do{
+                
+                    NSString * object = [[waitingList objectAtIndex:i] objectAtIndex:1];
+                    NSString * object2 = [[waitingList objectAtIndex:i] objectAtIndex:0];
+                 
+                 if ([object isEqualTo:@"HIGH"] || [object isEqualTo:@"MEDIUM_HIGH"] || [object isEqualTo:@"MEDIUM"] || [object isEqualTo:@"MEDIUM_LOW"] || [object isEqualTo:@"LOW"] || [object isEqualTo:@"LOWEST"] || [object2 isEqualTo:@"Empty"])
+                    {
+                        priority = @"HIGHEST";
+                        
+                    }
+                    else
+                    {
+                        priority = @"NULL";
+                    }
+                 i++;
+            }
+            while ([priority isNotEqualTo:@"HIGHEST"]);
+            index = i-1;
+        
+            // on insere l'instruction
+            [waitingList insertObject:informationList atIndex:index];
+        }
+        else if ([myPriority isEqualTo: @"HIGH"])
+        {
+            NSString * priority = nil;
+            int index =0;
+            int i=0;
+            
+            do{
+                NSString * object = [[waitingList objectAtIndex:i] objectAtIndex:1];
+                NSString * object2 = [[waitingList objectAtIndex:i] objectAtIndex:0];
+                
+                if ([object isEqualTo:@"MEDIUM_HIGH"] || [object isEqualTo:@"MEDIUM"] || [object isEqualTo:@"MEDIUM_LOW"] || [object isEqualTo:@"LOW"] || [object isEqualTo:@"LOWEST"] || [object2 isEqualTo:@"Empty"])
+                    {
+                        priority = @"HIGH";
+                        
+                    }
+                    else
+                    {
+                        priority = @"NULL";
+                    }
+                    i++;
+            }
+            while ([priority isNotEqualTo:@"HIGH"]);
+            index = i-1;
+            // on insere l'instruction
+            [waitingList insertObject:informationList atIndex:index];
+            
+        }
+        else if ([myPriority isEqualTo: @"MEDIUM_HIGH"])
+        {
+            NSString * priority = nil;
+            int index =0;
+            int i=0;
+            do{
+                
+                    NSString * object = [[waitingList objectAtIndex:i] objectAtIndex:1];
+                    NSString * object2 = [[waitingList objectAtIndex:i] objectAtIndex:0];
+                    
+                    if ([object isEqualTo:@"MEDIUM"] || [object isEqualTo:@"MEDIUM_LOW"] || [object isEqualTo:@"LOW"] || [object isEqualTo:@"LOWEST"] || [object2 isEqualTo:@"Empty"])
+                    {
+                        priority = @"MEDIUM_HIGH";
+                        
+                    }
+                    else
+                    {
+                        priority = @"NULL";
+                    }
+                i++;
+
+            }
+            while ([priority isNotEqualTo:@"MEDIUM_HIGH"]);
+            index = i-1;
+            // on insere l'instruction
+            [waitingList insertObject:informationList atIndex:index];
+        }
+        else if ([myPriority isEqualTo: @"MEDIUM"])
+        {
+            NSString * priority = @"NULL";
+            int index=0;
+            int i=0;
+            
+             do {
+                    NSString * object = [[waitingList objectAtIndex:i] objectAtIndex:1];
+                    NSString * object2 = [[waitingList objectAtIndex:i]objectAtIndex:0];
+                    
+                    if ([object isEqualTo:@"MEDIUM_LOW"] || [object isEqualTo:@"LOW"] || [object isEqualTo:@"LOWEST"] || [object2 isEqualTo:@"Empty"])
+                    {
+                        priority = @"MEDIUM";
+                        
+                    }
+                    else
+                    {
+                        priority = @"NULL";
+                    }
+                 i++;
+            }
+            while ([priority  isNotEqualTo:@"MEDIUM"]);
+            index = i-1;
+            // on insere l'instruction
+            [waitingList insertObject:informationList atIndex:index];
+            
+        }
+        else if ([myPriority isEqualTo: @"MEDIUM_LOW"])
+        {
+            NSString * priority = @"NULL";
+            int index=0;
+            int i=0;
+            
+            do {
+                
+                    NSString * object = [[waitingList objectAtIndex:i] objectAtIndex:1];
+                    NSString * object2 = [[waitingList objectAtIndex:i]objectAtIndex:0];
+                    
+                    if ([object isEqualTo:@"LOW"] || [object isEqualTo:@"LOWEST"] || [object2 isEqualTo:@"Empty"])
+                    {
+                        priority = @"MEDIUM-LOW";
+                        
+                    }
+                    else
+                    {
+                        priority = @"NULL";
+                    }
+                i++;
+            }
+            while ([priority isNotEqualTo:@"MEDIUM_LOW"]);
+            index = i-1;
+            
+            // on insere l'instruction
+            [waitingList insertObject:informationList atIndex:index];
+        }
+        else if ([myPriority isEqualTo: @"LOW"])
+        {
+            NSString * priority = nil;
+            int index =0;
+            int i=0;
+            
+            do{
+                    NSString * object = [[waitingList objectAtIndex:i] objectAtIndex:1];
+                    NSString * object2 = [[waitingList objectAtIndex:i] objectAtIndex:0];
+                    
+                    if ([object isEqualTo:@"LOWEST"] || [object2 isEqualTo:@"Empty"])
+                    {
+                        priority = @"LOW";
+                        
+                    }
+                    else
+                    {
+                        priority = @"NULL";
+                    }
+                i++;
+            }
+            while ([priority isNotEqualTo:@"LOW"]);
+            index = i-1;
+            // on insere l'instruction
+            [waitingList insertObject:informationList atIndex:index];
+            
+        }
+        else if([myPriority isEqualTo:@"LOWEST"])
+        {
+            [waitingList insertObject:informationList atIndex:[waitingList count]-1];
+        }
+            
+        for (int nb=0; nb<[waitingList count]; nb++)
+        {
+            NSLog(@"action : %@",[waitingList objectAtIndex:nb]);
+        }
+
     }
     
-    if ([[listInformation objectAtIndex:0] isEqual: @"stop"] && [[listInformation objectAtIndex:2] isEqual: @"0"]){
+    
+    
+   
+    /*for (int i=0; i<=[waitingList count]; i++)
+    {
+        if ([[[waitingList objectAtIndex:i]objectAtIndex:0] isEqualTo: @"pause"]){
+            
+            [PhonemicMacSpeechFunction pause];
+        }
         
-        [PhonemicMacSpeechFunction stop];
-    }
-    
-    if ([[listInformation objectAtIndex:0] isEqual: @"setVoice"] && [[listInformation objectAtIndex:2] isEqual: @"0"]){
+        else if ([[[waitingList objectAtIndex:i]objectAtIndex:0] isEqualTo: @"stop"]){
+            
+            [PhonemicMacSpeechFunction stop];
+        }
         
-        [PhonemicMacSpeechFunction setVoice:[listInformation objectAtIndex:3]];
-    }
-    
-    if ([[listInformation objectAtIndex:0] isEqual: @"setVolume"] && [[listInformation objectAtIndex:2] isEqual: @"0"]){
+        else if ([[[waitingList objectAtIndex:i]objectAtIndex:0] isEqualTo: @"setVoice"]){
+            
+            [PhonemicMacSpeechFunction setVoice:[informationList objectAtIndex:1]];
+        }
         
-        double_t volume = [[listInformation objectAtIndex:3] doubleValue];
-        [PhonemicMacSpeechFunction setVolume: volume];
-    }
-    
-    if ([[listInformation objectAtIndex:0] isEqual: @"setSpeed"] && [[listInformation objectAtIndex:2] isEqual: @"0"]){
+        else if ([[[waitingList objectAtIndex:i]objectAtIndex:0] isEqualTo: @"setVolume"]){
+            
+            double_t volume = [[informationList objectAtIndex:1] doubleValue];
+            [PhonemicMacSpeechFunction setVolume: volume];
+        }
         
-        double_t speed = [[listInformation objectAtIndex:3] doubleValue];
-        [PhonemicMacSpeechFunction setSpeed: speed];
-    }
-    
-    
-    if ([[listInformation objectAtIndex:0] isEqual: @"reinitialize"] && [[listInformation objectAtIndex:2] isEqual: @"0"]){
+        else if ([[[waitingList objectAtIndex:i]objectAtIndex:0] isEqualTo: @"setSpeed"]){
+            
+            double_t speed = [[informationList objectAtIndex:1] doubleValue];
+            [PhonemicMacSpeechFunction setSpeed: speed];
+        }
         
-        [PhonemicMacSpeechFunction reinitialize];
-    }
-    
-    
-    if ([[listInformation objectAtIndex:0] isEqual: @"isSpeaking"] && [[listInformation objectAtIndex:2] isEqual: @"0"]){
         
-        BOOL isSpeaking =[PhonemicMacSpeechFunction isSpeaking];
-    }
-    
-    
-    if ([[listInformation objectAtIndex:0] isEqual: @"getCurrentVoice"] && [[listInformation objectAtIndex:2] isEqual: @"0"]){
+        else if ([[[waitingList objectAtIndex:i]objectAtIndex:0] isEqualTo: @"reinitialize"]){
+            
+            [PhonemicMacSpeechFunction reinitialize];
+        }
         
-        NSString* currentVoice =[PhonemicMacSpeechFunction getCurrentVoice];
-    }
-    
-    if ([[listInformation objectAtIndex:0] isEqual: @"getVolume"] && [[listInformation objectAtIndex:2] isEqual: @"0"]){
         
-        int volume =[PhonemicMacSpeechFunction getVolume];
-    }
-    
-    if ([[listInformation objectAtIndex:0] isEqual: @"getVersion"] && [[listInformation objectAtIndex:2] isEqual: @"0"]){
+        else if ([[[waitingList objectAtIndex:i]objectAtIndex:0] isEqual: @"isSpeaking"]){
+            
+            BOOL isSpeaking =[PhonemicMacSpeechFunction isSpeaking];
+        }
         
-        int version =[PhonemicMacSpeechFunction getVersion];
+        else if ([[[waitingList objectAtIndex:i]objectAtIndex:0] isEqual: @"getCurrentVoice"]){
+            
+            NSString* currentVoice =[PhonemicMacSpeechFunction getCurrentVoice];
+        }
+        
+        else if ([[[waitingList objectAtIndex:i]objectAtIndex:0] isEqual: @"getVolume"]){
+            
+            int volume =[PhonemicMacSpeechFunction getVolume];
+        }
+        
+        else if ([[[waitingList objectAtIndex:i]objectAtIndex:0] isEqual: @"getVersion"] ){
+            
+            int version =[PhonemicMacSpeechFunction getVersion];
+        }
+        
+        else if ([[[waitingList objectAtIndex:i]objectAtIndex:0] isEqual: @"speak"] ){
+            
+            [PhonemicMacSpeechFunction speak :[[waitingList objectAtIndex:0]objectAtIndex:3]];
+        }
+        
+        else if ([[[waitingList objectAtIndex:i]objectAtIndex:0] isEqual: @"speakBlocking"] ){
+            
+            [PhonemicMacSpeechFunction speak :[[waitingList objectAtIndex:0]objectAtIndex:3]];
+        }
     }*/
+    
 }
 
 

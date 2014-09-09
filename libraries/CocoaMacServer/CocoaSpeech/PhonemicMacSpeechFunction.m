@@ -32,12 +32,11 @@ BOOL speechEnable;
 
 NSSpeechSynthesizer * speechSynth;
 
-+ (void) speak {
++ (void) speak:(NSString *)text {
     
-    NSString * texte= @"hello everybody";
     NSSpeechSynthesizer * speechSynth = [[NSSpeechSynthesizer alloc]init];
     speechSynth = [NSSpeechSynthesizer new];
-    [speechSynth startSpeakingString:texte ];
+    [speechSynth startSpeakingString:text];
     
     NSLog(@"fonction speach ");
 }
