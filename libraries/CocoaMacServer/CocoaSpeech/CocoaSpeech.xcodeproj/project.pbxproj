@@ -18,6 +18,7 @@
 		773EB2A11992EB59003215DE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773EB2801992EB59003215DE /* Cocoa.framework */; };
 		773EB2A91992EB59003215DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 773EB2A71992EB59003215DE /* InfoPlist.strings */; };
 		773EB2AB1992EB59003215DE /* CocoaSpeechTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 773EB2AA1992EB59003215DE /* CocoaSpeechTests.m */; };
+		7778D50019A65D50005A1E46 /* PhonemicMacSpeechServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7780B60F19942EED00FCF6B9 /* PhonemicMacSpeechServer.m */; };
 		7780B60D19942D4300FCF6B9 /* PhonemicMacSpeechFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7780B60C19942D4300FCF6B9 /* PhonemicMacSpeechFunction.m */; };
 		7780B61019942EED00FCF6B9 /* PhonemicMacSpeechServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7780B60F19942EED00FCF6B9 /* PhonemicMacSpeechServer.m */; };
 /* End PBXBuildFile section */
@@ -275,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				773EB2AB1992EB59003215DE /* CocoaSpeechTests.m in Sources */,
+				7778D50019A65D50005A1E46 /* PhonemicMacSpeechServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +400,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CocoaSpeech/CocoaSpeech-Prefix.pch";
@@ -411,6 +414,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CocoaSpeech/CocoaSpeech-Prefix.pch";
