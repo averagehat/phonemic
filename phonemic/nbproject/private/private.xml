@@ -2,8 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/Users/jwilson/dev/phonemic/phonemic/src/org/sodbeans/phonemic/start/Main.java</file>
-        <file>file:/Users/jwilson/dev/phonemic/phonemic/src/org/sodbeans/phonemic/tts/impl/CarbonSpeak.java</file>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Users/justineporcherot/Repositories/phonemic/phonemic/src/org/sodbeans/phonemic/start/Main.java</file>
+            <file>file:/Users/justineporcherot/Repositories/phonemic/phonemic/src/org/sodbeans/phonemic/tts/AbstractTextToSpeech.java</file>
+            <file>file:/Users/justineporcherot/Repositories/phonemic/phonemic/src/org/sodbeans/phonemic/tts/impl/ClientSpeak.java</file>
+            <file>file:/Users/justineporcherot/Repositories/phonemic/phonemic/src/org/sodbeans/phonemic/TextToSpeechFactory.java</file>
+            <file>file:/Users/justineporcherot/Repositories/phonemic/phonemic/src/org/sodbeans/phonemic/tts/TextToSpeechEngine.java</file>
+            <file>file:/Users/justineporcherot/Repositories/phonemic/phonemic/src/org/sodbeans/phonemic/AbstractSpeechProcessor.java</file>
+            <file>file:/Users/justineporcherot/Repositories/phonemic/phonemic/src/org/sodbeans/phonemic/daemon/ClientHandler.java</file>
+        </group>
     </open-files>
 </project-private>

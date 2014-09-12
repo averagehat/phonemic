@@ -30,7 +30,7 @@ public class TextToSpeechFactory {
     /**
      * The TCP port where the Phonemic daemon will be listening.
      */
-    public static final int PHONEMIC_SERVER_PORT = 56101;
+    public static final int PHONEMIC_SERVER_PORT = 56103;
     
     private static final OperatingSystem os = OperatingSystem.getOS();
     private static boolean carbonLibraryLoaded = false;
@@ -54,7 +54,11 @@ public class TextToSpeechFactory {
         // Load the proper library for this OS.
 
         if (os == OperatingSystem.MAC_OSX) {
+            Runtime runtime = Runtime.getRuntime();
+            String[] s= {"open","/phonemic/jni/CocoaSpeech.app/Contents/MacOS/CocoaSpeech"};
+            
             try {
+                runtime.exec(s);
                 instance = TextToSpeechFactory.getPhonemicClient("localhost");
             } catch (IOException ex) {
                 Logger.getLogger(TextToSpeechFactory.class.getName()).log(Level.SEVERE, null, ex);

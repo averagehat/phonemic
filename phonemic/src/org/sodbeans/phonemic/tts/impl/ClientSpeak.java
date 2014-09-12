@@ -80,9 +80,13 @@ public class ClientSpeak implements TextToSpeech {
         
         // Wait for acceptance message.
         String okLine = this.input.readLine();
-        
+        System.out.println(okLine);
         if (okLine == null || !okLine.equals("OK")) {
             throw new IOException("Unknown response received from Phonemic server.");
+        }
+        else
+        {
+            System.out.println(okLine);
         }
     }
     
