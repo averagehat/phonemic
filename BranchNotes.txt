@@ -1,0 +1,4 @@
+PhonemicMacSpeechServer has the 'lexical' errors 
+
+
+//#import "PhonemicMacConnection.h"  PhonemicMacAppDelegate.m  references  this which  DNE

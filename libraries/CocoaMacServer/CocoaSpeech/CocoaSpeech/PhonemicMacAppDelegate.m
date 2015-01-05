@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "PhonemicMacSpeechFunction.h"
 #import "PhonemicMacSpeechServer.h"
-#import "PhonemicMacConnection.h"
+//#import "PhonemicMacConnection.h" /// !!!!!!!!!!!!!!!!
 
 
 
