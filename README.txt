@@ -1,4 +1,9 @@
-= Phonemic version 1.5, June 26, 2012 =
+= Phonemic version 1.5 =
+This is a fork of https://bitbucket.org/stefika/phonemic/
+
+I am working on getting the Cocoa Speech Server up and running before the Quorum 3.0 release.
+
+Phonemic is amazing! You should use it. Make your next project accessible!
 
 == Introduction ==
 This is the third official release of the Phonemic speech library. Starting with this release, Phonemic now has the ability to run as a daemon speech server, handling multiple client connections over a TCP protocol. 
